@@ -5,3 +5,5 @@ matplotlib
 reportlab
 google-generativeai
 python-dotenv
+flask
+gunicorn
