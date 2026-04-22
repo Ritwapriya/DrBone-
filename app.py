@@ -1,25 +1,12 @@
-from flask import Flask, request, jsonify
-import os
+import streamlit as st
 
-app = Flask(__name__)
+st.title("DrBone AI - Fracture Detection 🦴")
 
-@app.route("/")
-def home():
-    return "DrBone API Running 🚀"
+uploaded_file = st.file_uploader("Upload X-ray Image", type=["jpg", "png"])
 
-@app.route("/predict", methods=["POST"])
-def predict():
-    file = request.files["file"]
-    
-    # Save uploaded image
-    filepath = "temp.jpg"
-    file.save(filepath)
+if uploaded_file:
+    st.image(uploaded_file, caption="Uploaded Image")
 
-    # Dummy response (we'll connect model later)
-    return jsonify({
-        "prediction": "Fracture Detected",
-        "confidence": "92%"
-    })
-
-if __name__ == "__main__":
-    app.run()
+    # Dummy output (replace with YOLO later)
+    st.success("Fracture Detected ✅")
+    st.write("Confidence: 92%")
